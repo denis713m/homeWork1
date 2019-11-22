@@ -1,3 +1,8 @@
+:root{
+    --paddingMain: 80px;
+    --coverHeight: 300px;
+}
+
 *
 {
     box-sizing: border-box;
@@ -7,18 +12,18 @@ body{
     display: flex;
     flex-direction: column;
 }
-body, .mainElement{
-    min-width: 800px;
+body, .mainElement, .activity{
+    min-width: 300px;
 }
 header{
-    overflow: hidden; position: relative; height: 350px
+    overflow: hidden; position: relative; height: calc(var(--coverHeight) + 50px)
 }
 .mainContainerHeader{
     display: flex;
     height: 50px;
     width:100vw;
     background-color: white;
-    padding: 8px 80px 8px;
+    padding: 8px var(--paddingMain) 8px;
 }
 .pop
 {
@@ -35,27 +40,27 @@ header{
     position: absolute;
     z-index: -1;
     width:100vw;
-    height: 300px;
+    height: var(--coverHeight);
     filter: blur(48px);
     background-size: cover;
     background-position: -15% 0;
     background-image: url("../img/photo_leaves.jpg");
 }
 .pageHeaderImage{
-    margin: -300px 80px 0;
-    flex-basis: 300px;
-    width: calc(100vw - 160px);
-    overflow: hidden;
+    margin: calc(-1*var(--coverHeight)) var(--paddingMain) 0;
+    flex-basis: var(--coverHeight);
+    width: calc(100vw - 2* var(--paddingMain));
+
 }
 .contactHeader{
     background-size:cover;
     background-image: url("../img/photo_leaves.jpg");
-    height: 300px;
+    height: var(--coverHeight);
 }
 .photoIconHeader{
     width: 40px;
     height: 40px;
-    margin-top: -270px;
+    margin-top: calc(30px - var(--coverHeight));
     margin-left: calc(100% - 110px);
     border-radius: 50%;
     background-color: rgba(0,0,0,0.5);
@@ -70,7 +75,7 @@ header{
     color: white;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    margin-top: 150px;
+    margin-top: calc(var(--coverHeight) - 40px - 50px - 2 * 30px);
     margin-left: calc(100% - 360px);
     padding: 10px 20px 10px;
     background-color: #00C5A1;
@@ -83,7 +88,7 @@ header{
 .contactInfo{
     display: flex;
     width: 100vw;
-    padding: 0 80px 0;
+    padding: 0 var(--paddingMain) 0;
     background-color: white;
 }
 .about{
@@ -103,6 +108,15 @@ header{
     background-size: cover;
 
 }
+.photoAvatarMobile{
+    display: none;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-image: url("../img/1fb3764fb0a25c84d97c707b5585ee6d.jpg");
+    background-size: cover;
+}
+
 .photoIcon{
     width: 40px;
     height: 40px;
@@ -162,9 +176,6 @@ header{
     flex-direction: row;
     flex-flow: row wrap;
 
-    box-sizing: border-box;
-
-
 }
 .badgeIcon{
     width: 40px;
@@ -215,14 +226,14 @@ header{
 }
 .postTagContainer{
     margin-top: -47px;
+    display: flex;
 }
 
 .postTagContainer > span{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-
+    height: 49px;
     margin-right: 20px;
-    padding-bottom: 25px;
     cursor: default;
 }
 .likedPost, .savedPost{
@@ -379,10 +390,86 @@ header{
 }
 .vector{
     height: 30px;
-    margin-left:git 10px;
+    margin-left: 10px;
     transform: rotate(90deg);
     justify-self: flex-end;
 }
 
+input[type=checkbox]{
+    display: none;
+}
+.closeSign{display: none;
+    margin-left: 180px;
+    margin-top: -200px;
+    opacity: 30%;
+}
+@media (max-width: 767px) {
+    :root{
+        --paddingMain: 10px;
+        --coverHeight: 150px;
+    }
+    .photoAvatarMobile{
+        display: block;
+        margin: 20px auto;
+    }
 
+    .photoIconHeader{
+        margin-left: calc(100% - 70px);
+    }
+    .postQuestion{
+        width: 220px;
+        height: 30px;
+        border-radius: 25px;
+        font-size: 14px;
+
+        margin-top: calc(var(--coverHeight) - 40px - 50px + 10px);
+        margin-left: calc(100% - 220px);
+        padding: 10px 20px 10px;
+    }
+    .contactInfo{
+        position: relative;
+    }
+    .about{
+
+        position: absolute;
+        margin-left: calc(-300px - var(--paddingMain));
+        margin-top: calc(-1 * var(--coverHeight) - 20px);
+        z-index: 100;
+    }
+
+    .photo{
+        margin-top: 30px;
+    }
+    .activity{
+        width: 100vw;
+        padding: 30px 0px 0px 10px;
+    }
+    .postShow{
+        margin-top: 10px;
+    }
+    input[type=checkbox]:checked ~ .about{
+        display: flex;
+        margin-left: 0px;
+
+        transition-property: margin-left;
+        transition-duration: 1s;
+    }
+    input[type=checkbox]:checked ~ .transparent{
+        position: absolute;
+        margin-top: calc(-1 * var(--coverHeight) - 70px);
+        margin-left: calc(-1 * var(--paddingMain));
+        width: 100vw;
+        height: 100%;
+        background-color: black;
+        opacity: 30%;
+    }
+
+    .closeSign{display: block;}
+
+    .postItem{
+        width: calc(100vw - 2 * var(--paddingMain));
+        min-width: 300px;
+
+    }
+}
 
