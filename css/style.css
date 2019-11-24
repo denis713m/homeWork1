@@ -433,7 +433,7 @@ input[type=checkbox]{
 
         position: absolute;
         margin-left: calc(-300px - var(--paddingMain));
-        margin-top: calc(-1 * var(--coverHeight) - 20px);
+        margin-top: calc(-1 * var(--coverHeight) - 70px);
         z-index: 100;
     }
 
@@ -456,10 +456,11 @@ input[type=checkbox]{
     }
     input[type=checkbox]:checked ~ .transparent{
         position: absolute;
-        margin-top: calc(-1 * var(--coverHeight) - 70px);
+        top: calc(-1 * var(--coverHeight) - 70px);
+        bottom:0;
         margin-left: calc(-1 * var(--paddingMain));
         width: 100vw;
-        height: 100%;
+        height: auto;
         background-color: black;
         opacity: 30%;
     }
